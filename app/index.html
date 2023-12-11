@@ -9,29 +9,13 @@
 </head>
 
 <body>
-    <div class="tabs">
-        <div class="tab" onclick="showTab(0)">
-            <span id="mainText">
-                Draw a shape!
-            </span>
-        </div>
-        <div class="tab" onclick="showTab(1)">
-            <span id="mainText">
-                Draw a path!
-            </span>
-        </div>
+    <div id="mainText">
+        Draw a shape!
     </div>
-    <div class="tab-content" id="tabContent0">
-        <canvas id="shapeCanvas" width="800" height="600"></canvas>
-        <button onclick="submitShape()">Move Cozmo</button>
-    </div>
-    <div class="tab-content" id="tabContent1">
-        <canvas id="pathCanvas" width="800" height="600"></canvas>
-        <button onclick="submitPath()">Move Cozmo</button>
-    </div>
-    <script src="scripts/shapeCanvas.js"></script>
-    <!-- <script src="scripts/pathCanvas.js"></script> -->
-    <script src="scripts/tabs.js"></script>
+    <canvas id="drawingCanvas" width="800" height="600"></canvas>
+    <button onclick="runScript()">Move Cozmo</button>
+    <script src="scripts/util.js"></script>
+
 </body>
 
 </html>

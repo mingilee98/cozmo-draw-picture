@@ -4,25 +4,17 @@ import subprocess
 app = Flask(__name__)
 
 
-@app.route("/submit-shape", methods=["POST"])
-def submit_shape():
+@app.route("/submit-image", methods=["POST"])
+def run_script():
     drawing_data = request.form.get("drawing")
     encoded_string = drawing_data.split(",")[1]
-    run_external_script("shape_main.py", encoded_string)
+    run_external_script(encoded_string)
     return "Drawing received successfully"
 
 
-@app.route("/submit-path", methods=["POST"])
-def submit_path():
-    drawing_data = request.form.get("drawing")
-    encoded_string = drawing_data.split(",")[1]
-    run_external_script("path_main.py", encoded_string)
-    return "Drawing received successfully"
-
-
-def run_external_script(file_path, input_data):
+def run_external_script(input_data):
     try:
-        cmd = ["python", file_path, input_data]
+        cmd = ["python", "main.py", input_data]
         result = subprocess.check_output(cmd, stderr=subprocess.STDOUT, text=True)
         return result
     except subprocess.CalledProcessError as e:
